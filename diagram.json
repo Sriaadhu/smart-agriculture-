@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "author": "Anantha Lakshmi",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -41.99, "left": -63.51, "attrs": {} },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay1",
+      "top": -160.61,
+      "left": 285.68,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay2",
+      "top": -159.78,
+      "left": 168.04,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay3",
+      "top": -154.67,
+      "left": 57.43,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": -145.91, "left": 171.12, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": -143.6, "left": 430.69, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": -305.63, "left": 448.47, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc2", "top": -362.79, "left": 353.83, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd2", "top": -331.6, "left": 570.53, "attrs": {} },
+    {
+      "type": "wokwi-lcd2004",
+      "id": "lcd2",
+      "top": 172.17,
+      "left": 557.64,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-dht22", "id": "dht2", "top": -100.72, "left": 639.89, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc3", "top": 75.53, "left": 602.46, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd3", "top": -14.95, "left": 765.52, "attrs": {} },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay4",
+      "top": 314.79,
+      "left": 237.57,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay5",
+      "top": 324.5,
+      "left": 84.82,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay6",
+      "top": 330.55,
+      "left": -70.35,
+      "rotate": 270,
+      "attrs": {}
+    },
+    { "type": "wokwi-vcc", "id": "vcc5", "top": 379.45, "left": -172.87, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd4", "top": 442.93, "left": 399.94, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "relay3:VCC", "relay2:VCC", "red", [ "v36.84", "h110.96", "v-7.17" ] ],
+    [ "relay2:VCC", "relay1:VCC", "red", [ "v41.95", "h113.02", "v-3.07" ] ],
+    [ "relay3:GND", "relay2:GND", "black", [ "v54.25", "h108.13", "v-6.15" ] ],
+    [ "relay2:GND", "relay1:GND", "black", [ "v62.44", "h107.12", "v-16.39" ] ],
+    [ "relay1:GND", "gnd1:GND", "black", [ "v57.33", "h59.99", "v-179.24", "h32.78", "v-4.1" ] ],
+    [ "relay2:VCC", "vcc1:VCC", "red", [ "v29.66", "h-41.64" ] ],
+    [
+      "relay3:IN",
+      "esp:D15",
+      "green",
+      [ "v110.59", "h-14.96", "v-2.05", "h0", "v0", "h-43.35", "v48.76", "h-30.7" ]
+    ],
+    [ "relay1:IN", "esp:D4", "green", [ "v144", "h-312.05" ] ],
+    [ "relay2:IN", "esp:D2", "green", [ "v154.28", "h-206.84" ] ],
+    [ "rtc1:5V", "vcc2:VCC", "red", [ "h-98.87", "v-51.8" ] ],
+    [ "rtc1:GND", "gnd2:GND", "black", [ "h-60.71", "v-66.72" ] ],
+    [ "lcd2:VCC", "relay3:VCC", "red", [ "h-331.48", "v-269.11" ] ],
+    [ "lcd2:GND", "relay3:GND", "black", [ "h-319.36", "v-263.24" ] ],
+    [ "dht2:VCC", "vcc3:VCC", "red", [ "v90.41", "h-40.44" ] ],
+    [ "dht2:GND", "gnd3:GND", "black", [ "v62.53", "h73.81", "v-2.42", "h-1.21", "v-9.7" ] ],
+    [ "relay6:VCC", "relay5:VCC", "red", [ "v39.87", "h150.74", "v-3.64" ] ],
+    [ "relay4:VCC", "relay5:VCC", "red", [ "v54.42", "h-148.69", "v-44.85" ] ],
+    [ "relay5:GND", "relay4:GND", "black", [ "v15.61", "h146.8" ] ],
+    [ "relay6:GND", "relay5:GND", "black", [ "v38.66", "h126.19" ] ],
+    [ "relay6:VCC", "vcc5:VCC", "red", [ "v0" ] ],
+    [ "relay4:GND", "gnd4:GND", "black", [ "v38.66", "h108.01" ] ],
+    [ "rtc1:SCL", "esp:D22", "green", [ "h-403.84", "v266.16" ] ],
+    [ "rtc1:SDA", "esp:D21", "green", [ "h-394.09", "v267.3" ] ],
+    [ "dht2:SDA", "esp:D5", "green", [ "v37.72", "h-624.19" ] ],
+    [ "lcd2:SCL", "esp:D22", "green", [ "h-507.51", "v-243.47", "h-22.29", "v-4.18", "h11.15" ] ],
+    [ "esp:D21", "lcd2:SDA", "green", [ "h498.42", "v207.94" ] ],
+    [ "relay4:IN", "esp:D18", "green", [ "v11.95", "h101.24", "v-305.13" ] ],
+    [ "relay5:IN", "esp:D19", "green", [ "v-385.1", "h-115.24" ] ],
+    [ "esp:D13", "relay6:IN", "green", [ "h-30.87", "v333.37" ] ]
+  ],
+  "dependencies": {}
+}
